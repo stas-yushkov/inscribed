@@ -9,7 +9,6 @@
   <body>
     <script>
       const isRectangleInscribedInACircle = () => {
-        alert('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         const radius = Number.parseInt(
           prompt('Цілочисельний радіус кола (введіть значення 65):'),
         );
@@ -28,7 +27,7 @@
 
         const digitsAfterTheDot = Number.parseInt(
           prompt(
-            'Обчислення виконати з точністю знаків після коми (введіть значення 0 або 1):',
+            'Обчислення виконати з точністю ... знаків після коми (введіть значення 0 або 1 або більше):',
           ),
         );
 
@@ -41,15 +40,17 @@
           alert(
             'Одне обо декілька введених значень не цілі числа. Введіть цілі числа',
           );
-          window.location.reload();
+          window.location.reload(true);
           return;
         }
 
         const diagonal = parseFloat(
-          Math.sqrt(aSide * aSide + bSide * bSide).toFixed(digitsAfterTheDot),
+          Math.sqrt(aSide * aSide + bSide * bSide).toFixed(
+            Math.abs(digitsAfterTheDot),
+          ),
         );
 
-        if (2 * radius === diagonal) {
+        if (2 * Math.abs(radius) === diagonal) {
           alert('Прямокутник вписано');
           return;
         }
@@ -61,8 +62,3 @@
     </script>
   </body>
 </html>
-
-<!-- Нехай r – цілочисельний радіус кола, a,b – цілочисельні довжини сторін прямокутника, центр якого збігається з центром кола.
-Видати повідомлення «Прямокутник вписано», якщо він розміщений в колі, і «Прямокутник не вписано», якщо він не має спільних точок з колом. 
-
-Сделать так что б во время введения переменных, программа проверяла правильность вводимых чисел ( если числа целые программа выполняется дальше, если не целые или не числа , вывод сообщения " введите целые числа" и либо пусть сообщения так и висит до ручного обновления страницы либо с дилеем само начинало программу сначала) -->
